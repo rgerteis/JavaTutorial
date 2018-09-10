@@ -36,13 +36,13 @@ public class VectorTutorial {
 	}
 
 	private void addItem() {
-		myVector.add("Eliot");
+		myVector.add("Chandler");
 		System.out.println(myVector);
 	}
 
 	public VectorTutorial () {
-		myVector.add("Roman");
-		myVector.add("Pia");
-		myVector.add("Joachim");		
+		myVector.add("Joey");
+		myVector.add("Rachel");
+		myVector.add("Ross");		
 	}
 }
