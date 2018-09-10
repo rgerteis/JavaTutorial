@@ -15,7 +15,7 @@ public class HashSetTutorial {
 	
 	private void convertToArrayList() {
 		
-		// ArrayList constructure allows Sets as an argument
+		// ArrayList constructor allows Sets as an argument
 		List<String> lst = new ArrayList<String>(mySet);
 		
 		for (String s:lst) {

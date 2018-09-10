@@ -1,6 +1,9 @@
 package io.roman.tutorial.collections;
 
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Map.Entry;
 
 public class HashMapTutorial {
 	
@@ -21,7 +24,24 @@ public class HashMapTutorial {
 		
 		hs.printHashMap();
 		hs.modifyHashNMap();
+		hs.iterate();
 
+	}
+
+	private void iterate() {
+		
+		// Use Entry Object
+		for (Map.Entry<Integer, String> el : myMap.entrySet()) {			
+			System.out.println("Key: " + el.getKey() + " | Value: " + el.getValue());			
+		}
+		
+		// Use Iterator Object
+		Iterator<Entry<Integer, String>> i = myMap.entrySet().iterator();		
+		while(i.hasNext()) {			
+			Map.Entry<Integer, String> el = (Map.Entry<Integer,String>) i.next();
+			System.out.println("Key: " + el.getKey() + " | Value: " + el.getValue());						
+		}
+		
 	}
 
 	private void modifyHashNMap() {
@@ -31,6 +51,8 @@ public class HashMapTutorial {
 		
 		// overwrite existing value
 		myMap.put(6,"Rachayl");
+		// you should use replace, so it's clear
+		myMap.replace(6, "Rachayl");
 		System.out.println(myMap);
 		
 		myMap.remove(6);
