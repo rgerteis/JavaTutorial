@@ -12,7 +12,7 @@ public class StringArrayListTutorial {
 		tutorial.addValues();
 		tutorial.addValuesAtPosition();
 		tutorial.removeValues();
-		tutorial.replaceValue("Regina", "Kurt");
+		tutorial.replaceValue("Rachel", "Phoebe");
 		tutorial.readValue();
 		tutorial.iterateList();
 		tutorial.updateValue();
@@ -25,18 +25,30 @@ public class StringArrayListTutorial {
 		tutorial.swapElements();
 		tutorial.combineTwoListsIntoOne();
 		tutorial.cloning();
+		tutorial.copyToStringArray();
 		
 	}
 	
+	private void copyToStringArray() {
+		// One method is to use the toArray function of the List Object
+		System.out.println("** ArrayList to String[] array ** ");
+		String values[] = myArraylist.toArray(new String[myArraylist.size()]);
+		for (String k:values) {
+			System.out.println(k);
+		}
+		
+	}
+
 	private void cloning() {
 		System.out.println("** Cloning **");
 		// Use the clone method of Arraylist, but you are required to cast it
+		@SuppressWarnings("unchecked")
 		ArrayList<String> clone = (ArrayList<String>) myArraylist.clone();
 		
 		// now let's modify the clone and the original
-		myArraylist.set(3, "Marianne");
-		myArraylist.remove("Jo");
-		clone.add("Maria");
+		myArraylist.set(3, "Janice");
+		myArraylist.remove("Rachel");
+		clone.add("Cole");
 		
 		System.out.println(myArraylist);
 		System.out.println(clone);
@@ -56,9 +68,9 @@ public class StringArrayListTutorial {
 	private void swapElements() {
 		System.out.println("** Swapping two elements **");
 		System.out.println(myArraylist);
-		Collections.swap(myArraylist, 1, 5);
+		Collections.swap(myArraylist, 1, 3);
 		System.out.println(myArraylist);		
-		Collections.swap(myArraylist, 1, 5);
+		Collections.swap(myArraylist, 1, 3);
 	}
 
 	private void compareTwoLists() {
@@ -70,12 +82,12 @@ public class StringArrayListTutorial {
 		eq = myArraylist.equals(anotherArrayList);
 		System.out.println(eq);
 		
-		anotherArrayList.add("Hanna");
+		anotherArrayList.add("Rachel");
 		
 		eq = myArraylist.equals(anotherArrayList);
 		System.out.println(eq);
 		
-		anotherArrayList.remove("Hanna");
+		anotherArrayList.remove("Rachel");
 		
 		// Another approach is to use array level comparison
 		eq = Arrays.equals(myArraylist.toArray(), anotherArrayList.toArray());
@@ -112,11 +124,11 @@ public class StringArrayListTutorial {
 	}
 
 	private void indexValues() {
-		myArraylist.add("Joachim");
+		myArraylist.add("Joey");
 		System.out.println(myArraylist);
-		System.out.println(myArraylist.indexOf("Joachim"));		
-		System.out.println(myArraylist.lastIndexOf("Joachim"));
-		myArraylist.remove(myArraylist.lastIndexOf("Joachim"));
+		System.out.println(myArraylist.indexOf("Joey"));		
+		System.out.println(myArraylist.lastIndexOf("Joey"));
+		myArraylist.remove(myArraylist.lastIndexOf("Joey"));
 		
 	}
 
@@ -137,13 +149,13 @@ public class StringArrayListTutorial {
 	}
 
 	private void readValue() {
-		String val = myArraylist.get(5);
+		String val = myArraylist.get(3);
 		System.out.println(val);
 		
 	}
 
 	public void updateValue() {
-		myArraylist.set(2, "Jo");
+		myArraylist.set(2, "Joey");
 		for(String str:myArraylist) {
 			System.out.println(str);
 		}
@@ -179,7 +191,7 @@ public class StringArrayListTutorial {
 	}
 
 	public void addValuesAtPosition() {
-		this.myArraylist.add(3, "Stefan");
+		this.myArraylist.add(3, "Chandler");
 		System.out.println(this.myArraylist);
 		
 	}
@@ -187,12 +199,11 @@ public class StringArrayListTutorial {
 	public void addValues() {
 		// Let's just add some values here
 		
-		this.myArraylist.add("Roman");
-		this.myArraylist.add("Joachim");
-		this.myArraylist.add("Pia");
-		this.myArraylist.add("Eugen");
-		this.myArraylist.add("Rita");
-		this.myArraylist.add("Regina");
+		this.myArraylist.add("Phoebe");
+		this.myArraylist.add("Rachel");
+		this.myArraylist.add("Joey");
+		this.myArraylist.add("Ross");
+		this.myArraylist.add("Monica");
 		
 		System.out.println(this.myArraylist);
 		
@@ -200,7 +211,7 @@ public class StringArrayListTutorial {
 
 	public StringArrayListTutorial() {
 		
-		myArraylist = new ArrayList<>();
+		myArraylist = new ArrayList<>(50);
 		
 	}
 	
