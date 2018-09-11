@@ -88,7 +88,8 @@ public class Intersect {
 				System.arraycopy(secondList, k, slice, 0, slideSize);
 				
 				if (firstList[i].intValue() < slice[0].intValue()) {
-					// This slice where lowest number is already higher than the value we look for can be skipped. We won't find no match.
+					// This slice where lowest number is already higher than the 
+					// value we look for can be skipped. We won't find no match.
 					break;
 				} else if (firstList[i].intValue() >= slice[0].intValue() && 
 					firstList[i].intValue() <= slice[slideSize - 1].intValue()) {
