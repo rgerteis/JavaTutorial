@@ -116,6 +116,7 @@ public class Intersect {
 
 		int lastPos = 0;
 
+		
 		for (int i = 0; i < firstList.length; i++) {
 
 			for (int j = lastPos; j < secondList.length; j++) {
