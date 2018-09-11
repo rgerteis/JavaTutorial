@@ -184,9 +184,6 @@ public class ArrayListTutorial {
 
 	}
 
-	public void arrayOperations() {
-
-	}
 
 	public void addValuesAtPosition() {
 		this.myArraylist.add(3, "Chandler");
@@ -197,7 +194,7 @@ public class ArrayListTutorial {
 	public void addValues() {
 		// Let's just add some values here
 
-		this.myArraylist.add("Phoebe");
+		this.myArraylist.add(Friends.CHANDLER.getName());
 		this.myArraylist.add("Rachel");
 		this.myArraylist.add("Joey");
 		this.myArraylist.add("Ross");
