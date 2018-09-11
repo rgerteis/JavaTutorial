@@ -69,6 +69,12 @@ public class Intersect {
 
 	}
 
+	/**
+	 * Using slices of the secondList
+	 * @param firstList
+	 * @param secondList
+	 * @return intersected values
+	 */
 	private ArrayList<Integer> slicedIntersect(Integer[] firstList, Integer[] secondList) {
 
 		ArrayList<Integer> result = new ArrayList<>();
@@ -109,6 +115,12 @@ public class Intersect {
 		return result;
 	}
 
+	/**
+	 * Use moving pointer through second set to avoid re-reads
+	 * @param firstList
+	 * @param secondList
+	 * @return
+	 */
 	private ArrayList<Integer> movingPositionsIntersect(Integer[] firstList, Integer[] secondList) {
 
 		ArrayList<Integer> result = new ArrayList<>();
