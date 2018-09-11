@@ -6,16 +6,13 @@ import java.io.*;
 /**
  * Given two sorted Arrays with integers return an array that contains the
  * intersection. The first Array is large, the second is smaller
- * 
- * @author Roman Gerteis
- *
  */
 public class Intersect {
 
 	static String fileOne = "/tmp/file_one.txt";
 	static String fileTwo = "/tmp/file_two.txt";
-	static int arrayOneValues = 5;
-	static int arrayTwoValues = 10;
+	static int arrayOneValues = 50;
+	static int arrayTwoValues = 121;
 
 	public static void main(String args[]) {
 
@@ -50,25 +47,25 @@ public class Intersect {
 		startTime = System.nanoTime();
 		List<Integer> solution1 = is.trivialIntersect(arr1, arr2);
 		endTime = System.nanoTime();
-		System.out.println("Runtime: " + (endTime - startTime) + " nano secs" + " | " + solution1);
+		System.out.println("Runtime: " + (endTime - startTime) + " nano secs\t" + " | " + solution1);
 
 		// Run the second solution with Collections
 		startTime = System.nanoTime();
 		List<Integer> solution2 = is.intersectWithCollections(arr1, arr2);
 		endTime = System.nanoTime();
-		System.out.println("Runtime: " + (endTime - startTime) + " nano sec" + " | " + solution2);
+		System.out.println("Runtime: " + (endTime - startTime) + " nano sec\t" + " | " + solution2);
 
 		// Run the second solution with optimized sliding
 		startTime = System.nanoTime();
 		List<Integer> solution3 = is.movingPositionsIntersect(arr1, arr2);
 		endTime = System.nanoTime();
-		System.out.println("Runtime: " + (endTime - startTime) + " nano secs" + " | " + solution3);
+		System.out.println("Runtime: " + (endTime - startTime) + " nano secs\t" + " | " + solution3);
 
 		// Run the second solution with optimized sliding
 		startTime = System.nanoTime();
 		List<Integer> solution4 = is.slicedIntersect(arr1, arr2);
 		endTime = System.nanoTime();
-		System.out.println("Runtime: " + (endTime - startTime) + " nano secs" + " | " + solution4);
+		System.out.println("Runtime: " + (endTime - startTime) + " nano secs\t" + " | " + solution4);
 
 	}
 
@@ -77,33 +74,34 @@ public class Intersect {
 		ArrayList<Integer> result = new ArrayList<>();
 
 		// slice the secondList
-		int slideSize = 2;
+		int slideSize = 5;
 		int lastPos = 0;
 
 		for (int i = 0; i < firstList.length; i++) {
 
-			// get slice
-			for (int k = 0; k < secondList.length; k += slideSize) {
-				
+			// Go through secondList in slices
+			for (int k = lastPos; k < secondList.length; k += slideSize) {
+							
 				Integer[] slice = new Integer[slideSize];
 				
+				// create a slice of the original array 
 				System.arraycopy(secondList, k, slice, 0, slideSize);
-
-				System.out.println(slice[0] + ":" + slice[1]);
-
-				if (firstList[i].intValue() >= slice[0].intValue()
-						&& firstList[i].intValue() <= slice[slideSize - 1].intValue()) {
-					// This slice potentially contains a match
+				
+				if (firstList[i].intValue() < slice[0].intValue()) {
+					// This slice where lowest number is already higher than the value we look for can be skipped. We won't find no match.
+					break;
+				} else if (firstList[i].intValue() >= slice[0].intValue() && 
+					firstList[i].intValue() <= slice[slideSize - 1].intValue()) {
+					// This slice contains a potential match. Lets find investigate
 					for (int j = 0; j < slice.length; j++) {
 						if (firstList[i].intValue() == slice[j].intValue()) {
 							result.add(firstList[i].intValue());
+							lastPos=k;
 							break;
 						}
 					}
-				} else {
-					// This slice can not contain a match, so we can skip it
-					break;
 				}
+				lastPos = k;
 			}
 		}
 
