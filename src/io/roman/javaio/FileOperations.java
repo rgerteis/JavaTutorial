@@ -4,7 +4,9 @@ import java.io.*;
 
 public class FileOperations {
 
+	@SuppressWarnings("unused")
 	private static String aFile = "/tmp/a_file.txt";
+	@SuppressWarnings("unused")
 	private static String oFile = "/tmp/other_file.txt";
 	private static String csvFile = "/tmp/csv_file.txt";
 
@@ -29,9 +31,9 @@ public class FileOperations {
 
 	public static void main(String[] args) {
 
+		@SuppressWarnings("unused")
 		FileOperations fo = new FileOperations();
 		
-
 	}
 
 }
